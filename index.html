@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ЭХО — VR хоррор (WebXR)</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #000; overflow: hidden; font-family: system-ui, 'Segoe UI', sans-serif; color: #ddd; }
+    canvas { display: block; }
+    #overlay {
+      position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: radial-gradient(ellipse at center, #0b0d12 0%, #000 80%); text-align: center; padding: 24px; z-index: 5;
+    }
+    #overlay h1 { font-size: 3.2rem; letter-spacing: .35em; margin: 0 0 .15em; color: #c33; font-weight: 300; }
+    #overlay .sub { font-size: 1.05rem; color: #a88; letter-spacing: .12em; margin-bottom: 1.2em; }
+    #overlay p { max-width: 640px; line-height: 1.55; color: #9aa; margin: .45em 0; }
+    #overlay .warn { color: #b87; font-size: .88rem; max-width: 620px; }
+    #overlay label { margin: 16px 0; color: #bbb; cursor: pointer; display: block; }
+    #desk {
+      margin-top: 12px; padding: 14px 32px; background: transparent; color: #ccc; border: 1px solid #555;
+      border-radius: 4px; cursor: pointer; font-size: 1.05rem; letter-spacing: .04em;
+    }
+    #desk:hover { border-color: #c33; color: #fff; background: rgba(180,40,40,.12); }
+    #controls { font-size: .78rem; color: #667; margin-top: 20px; max-width: 680px; line-height: 1.65; text-align: left; }
+    #hud {
+      position: fixed; left: 16px; bottom: 16px; z-index: 4; font: 14px/1.4 monospace; color: #bcd;
+      background: rgba(0,0,0,.45); padding: 8px 12px; border-radius: 4px; white-space: pre; display: none;
+    }
+  </style>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="overlay">
+    <h1>ЭХО</h1>
+    <div class="sub">ЖАНҒЫРЫҚ</div>
+    <p>Тастанды станция. Көрмейтін, тек еститін жаратылыс. Үнсіздік — сенің жалғыз қаруың.</p>
+    <p class="warn">⚠ Ойын қорқынышты көріністер, күрт дыбыстар және қараңғылықты қамтиды. Құлаққаппен ойнаңыз. Эпилепсиясы бар адамдарға және өзін нашар сезінетіндерге ұсынылмайды. Жүрек айнуы пайда болса — шлемді шешіңіз.</p>
+    <label><input type="checkbox" id="mic"> Микрофонды пайдалану (шындықтағы қатты дыбыс та жаратылысты тартады)</label>
+    <button id="desk">ПК-де ойнау (шлемсіз тест)</button>
+    <div id="controls">
+      <b>VR:</b> сол стик — жүру · оң стик — бұрылу / телепорт · хват (grip) — алу / лақтыру · курок — шам / пайдалану · сол стик клигі — тегіс жүріс ⇄ телепорт · X — рацияны басу · шынымен отырыңыз, тыныш жүру үшін<br>
+      <b>ПК:</b> WASD — жүру · Shift — тыныш · Ctrl/C — отыру · тышқан — қарау · E — алу/қою · ЛКМ — лақтыру · F — шам / пайдалану
+    </div>
+  </div>
+  <div id="hud"></div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

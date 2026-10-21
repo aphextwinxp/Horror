@@ -1,0 +1,12 @@
+{
+  "name": "indie-horror-vr",
+  "version": "0.3.0",
+  "description": "ЭХО — VR хоррор WebXR (Three.js), қазақ тілі",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "check": "node --check src/main.js"
+  },
+  "license": "MIT"
+}
